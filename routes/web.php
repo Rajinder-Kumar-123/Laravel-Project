@@ -13,8 +13,8 @@ use  App\Http\Controllers\registrationController;
 |
 */
 Route::namespace('Auth')->group(function () {
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/index', function () {
+    return view('index');
 });
 
 Route::get('/login', function () {
