@@ -10,11 +10,15 @@ class question extends Model
     use HasFactory;
     protected $table= "question";
 
-    public $timestamps= false;
+    public $timestamps= true;
 
     protected $fillable= [
         'name',
         'category',
+        'option1',
+        'option2',
+        'option3',
+        'option4',
         'allQuestions',
     ];
     public function setCategoryAttribute($value)

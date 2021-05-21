@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'role'
     ];
 
     /**
@@ -28,6 +29,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public $timestamps= false;
     protected $hidden = [
         'password',
         'remember_token',

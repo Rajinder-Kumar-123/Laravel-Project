@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use Auth;
 class admin
 {
     /**
@@ -16,10 +16,11 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_admin == 1){
+         if(auth::check() && Auth::user()->role =='admin'){
             return $next($request);
-        }
-   
-        return redirect('home')->with('error',"Only admin can access!");
+    }else{
+        return redirect('login')->with("message", "Only admin can access admin dashboard");
     }
+   
+}
 }

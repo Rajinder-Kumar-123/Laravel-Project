@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
-class teacher
+
+class student
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,11 @@ class teacher
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth::check() && auth()->user()->role=='teacher'){
+         if(auth::check() && Auth::user()->role =='student'){
             return $next($request);
-        }else{
-            return redirect('login')->with("message", "Only teacher can access teacher dashboard");
-        }
-      
-       
-       
+    }else{
+        return redirect('login')->with("message", "Only student can access student dashboard");
     }
-
+   
+}
 }

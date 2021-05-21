@@ -42,18 +42,18 @@ class registrationController extends Controller
             'password'=>'required',
         ]);
     $user= registerModel::where('email', $request->input('email'))->get();
-     /*  $user= registerModel::find($id);
-      dd($user->student);
+     /*  $user= registerModel::where('id', $id)->first('id', 'name')->admin;
+      dd($user);
       exit; */
             
     if(Crypt::decrypt($user[0]->password)==$request->input('password')){
-         if (registerModel::where('role', $id)->get('id', 'name')) {
+         if (registerModel::where('id', $id)->first('id', 'name')->admin) {
             return redirect('admin');
         }
-         else if(registerModel::where('role', $id)->get('id', 'name')){
+         else if(registerModel::where('id', $id)->first('id', 'name')->teacher){
             return redirect('teacher');
         }
-        else if(registerModel::where('role', $id)->get('id', 'name')){
+        else if(registerModel::where('id', $id)->first ('id', 'name')->student){
             return redirect('student');
         }
         return redirect('/')->with('message', 'Login is successfully');
@@ -70,13 +70,25 @@ class registrationController extends Controller
         return redirect('showQuestions');
     }
 
-    public function index($id){
-        $requests= question::all();
+    public function index(){
+        $requests= question::paginate(5);
+        //$reqesd=DB::table('question')->paginate(5);
         return view('showQuestions', ['request'=>$requests]);
     }
+    public function edit($id){
+        $requests= question::find($id);
+        return view('showQuestions', ['request'=>$requests]);
+    }
+    public function update(Request $request, $id){
+        $input = $request->all();
+        $input['category']= $request->input('category');
+        question::create($input);
+        return redirect('showQuestions')->with('message', 'Question is successfully updated');
+    }
     function destroyController($id){
-         DB::table('question')->whereIn('id', $id)->delete();
-        return redirect('/showQuestions')->with('message', 'Data is successfully deleted');
+        $requests = question::find($id);
+        $requests->delete();
+        return redirect('/showQuestions')->with('message', 'Questions is successfully deleted');
        }
 
        public function multipleChoice($id){

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\registrationController;
+use  App\Http\Controllers\adminController;
+use  App\Http\Controllers\studentController;
+use  App\Http\Controllers\teacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +29,7 @@ Route::get('/register', function () {
     return view('register');
 });
 Route::post('registerForm', [registrationController::class, 'registerInsert']);
-Route::get('loginForm/{id}', [registrationController::class, 'loginFetch']);
+Route::get('loginForm', [registrationController::class, 'loginFetch']);
 
 
 Route::get('/home', function () {
@@ -34,9 +37,7 @@ Route::get('/home', function () {
 });
 
 });
-Route::get('register_admin', function () {
-    return view('register_admin');
-});
+
 Route::get('teacher', function () {
     return view('teacher');
 });
@@ -57,8 +58,13 @@ Route::post('questions' , [registrationController::class, 'questions']);
 
 //Route::view('showQuestions', [registrationController::class,'showQuestions']);
 Route::get('showQuestions', [registrationController::class, 'index']);
+Route::get('edit/{id}', [registrationController::class, 'edit']);
+Route::post('update', [registrationController::class, 'update']);
 Route::get('destroyController/{id}', [registrationController::class, 'destroyController']); 
-//Auth::routes();
+Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [adminController::class, 'index'])->name('admin')->middleware('admin');
+Route::get('/student', [studentController::class, 'index'])->name('student')->middleware('student');
+Route::get('/teacher', [teacherController::class, 'index'])->name('teacher')->middleware('teacher');
 //Route::get('/admin', [registrationController::class, 'handleAdmin'])->name('admin.route')->middleware('admin');

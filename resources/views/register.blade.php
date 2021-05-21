@@ -81,9 +81,10 @@
           @enderror
           <div class="form-group">  
             <label for="role">Role:</label>
-            <select class="form-control" name="role" required="">
+            <select class="form-control" name="role">
               <option value="">Select Role</option>
               <option value="admin"> Admin</option>
+              <option value="user"> User</option>
               <option value="teacher">Teacher</option>
               <option value="student">Student</option>
             </select>
