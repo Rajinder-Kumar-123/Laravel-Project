@@ -42,9 +42,6 @@ class LoginController extends Controller
             case 3:
                 $this->redirectTo= 'teacher';
                 return $this->redirectTo; 
-                case 4:
-                    $this->redirectTo= 'home';
-                    return $this->redirectTo;    
             default:
                 $this->redirectTo = '/login';
                 return $this->redirectTo;        
@@ -64,12 +61,9 @@ class LoginController extends Controller
         } elseif(Auth::check() && Auth::user()->role == 'student'){
             $this->redirectTo = route('student');
         }
-         elseif(Auth::check() && Auth::user()->role == 'null'){
-            $this->redirectTo = route('home');
-        }
          elseif(Auth::check() && Auth::user()->role == 'teacher'){
             $this->redirectTo = route('teacher');
-    }
+        }
         $this->middleware('guest')->except('logout');
     }
 }

@@ -52,7 +52,7 @@
                                 <td>{{ $req->option3 }}</td>
                                 <td>{{ $req->option4 }}</td>
                                 <td style="overflow-wrap: inherit;
-  word-wrap: break-word;">{{ $req->allQuestions }}</td>
+                                 word-wrap: break-word;">{{ $req->allQuestions }}</td>
                                 <td>{{ $req->created_at }}</td>
                                 <td ><a href="destroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
                                 <td><a href="edit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>

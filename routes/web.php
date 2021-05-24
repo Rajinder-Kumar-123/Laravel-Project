@@ -17,7 +17,7 @@ use  App\Http\Controllers\teacherController;
 */
 Route::namespace('Auth')->group(function () {
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/login', function () {
