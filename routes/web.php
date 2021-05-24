@@ -59,7 +59,8 @@ Route::post('questions' , [registrationController::class, 'questions']);
 //Route::view('showQuestions', [registrationController::class,'showQuestions']);
 Route::get('showQuestions', [registrationController::class, 'index']);
 Route::get('edit/{id}', [registrationController::class, 'edit']);
-Route::post('update', [registrationController::class, 'update']);
+Route::put('update/{id}', [registrationController::class, 'update']);
+Route::get('detailPreview/{id}', [registrationController::class, 'detailPreview']);
 Route::get('destroyController/{id}', [registrationController::class, 'destroyController']); 
 Auth::routes();
 

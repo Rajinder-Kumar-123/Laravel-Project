@@ -71,26 +71,38 @@ class registrationController extends Controller
     }
 
     public function index(){
-        $requests= question::paginate(5);
+        $requests= question::paginate(10);
         //$reqesd=DB::table('question')->paginate(5);
         return view('showQuestions', ['request'=>$requests]);
     }
     public function edit($id){
         $requests= question::find($id);
-        return view('showQuestions', ['request'=>$requests]);
+        return view('edit', ['request'=>$requests]);
     }
     public function update(Request $request, $id){
-        $input = $request->all();
-        $input['category']= $request->input('category');
-        question::create($input);
-        return redirect('showQuestions')->with('message', 'Question is successfully updated');
+        $requests = question::find($id);
+            $request->name= $request->input('name');
+            $request->option1=$request->input('option1');
+            $request->option2=$request->input('option2');
+            $request->option13=$request->input('option3');
+            $request->option4=$request->input('option4');
+            $request->allQuestions=$request->input('allQuestions');
+            $request->save();
+            echo "data is updated";
+        
+       /*  $input = $request->all();
+        question::whereIn($id)->update($input); */
+        //return redirect('showQuestions')->with('message', 'Question is successfully updated');
     }
     function destroyController($id){
         $requests = question::find($id);
         $requests->delete();
         return redirect('/showQuestions')->with('message', 'Questions is successfully deleted');
        }
-
+       function detailPreview( $id){
+        $requests= DB::table('question')->where('id', $id)->get();
+         return view('detailPreview', ['request'=> $requests]);
+       }
        public function multipleChoice($id){
             $user= question::find($id);
             $req= DB::table('question')->where('id', $id)->get();

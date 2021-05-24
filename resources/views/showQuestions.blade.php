@@ -7,12 +7,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-fluid">
+<div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div id="showimages"></div>
             </div>
-            <div class="col-md-12 offset-3 mt-5">
+            <!-- <div class="col-md-12 offset-3 mt-5"> -->
                 <div class="card">
                     <div class="card-header bg-info">
                         <h6 class="text-white">How To Store Multiple Question Value In Database using Laravel</h6>
@@ -32,10 +32,10 @@
                                 <th>Option2</th>
                                 <th>Option3</th>
                                 <th>Option4</th>
-                                <th>Date</th>
                                 <th>Questions</th>
-                                <th>Action</th>
-                                <th>Action</th>
+                                <th>Date</th>
+                                <th style="text-align:center" colspan="3">Action</th>
+                                
                             </tr>
                             @foreach($request as $req)
                             <tr>
@@ -51,10 +51,12 @@
                                 <td>{{ $req->option2 }}</td>
                                 <td>{{ $req->option3 }}</td>
                                 <td>{{ $req->option4 }}</td>
+                                <td style="overflow-wrap: inherit;
+  word-wrap: break-word;">{{ $req->allQuestions }}</td>
                                 <td>{{ $req->created_at }}</td>
-                                <td>{{ $req->allQuestions }}</td>
-                                <td><a href="destroyController/{{$req->id}}">Delete</a></td>
-                                <td><a href="edit/{{$req->id}}" >Edit</a></td>
+                                <td ><a href="destroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="edit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>
+                                <td><a href="detailPreview/{{$req->id}}" class="btn btn-primary text-white">Show</a></td>
                             </tr>
                             @endforeach
                         </table>
@@ -63,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 </body>

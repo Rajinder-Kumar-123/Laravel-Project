@@ -17,10 +17,10 @@ class admin
     public function handle(Request $request, Closure $next)
     {
          if(auth::check() && Auth::user()->role =='admin'){
-            return $next($request);
+           return redirect()->intended('admin');
     }else{
         return redirect('login')->with("message", "Only admin can access admin dashboard");
     }
-   
+    return $next($request);
 }
 }
