@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right mb-3">
-                                <a href="allQuestions" class="btn btn-success">Questions Create</a>
+                                <a href="php/addPhpQuestion" class="btn btn-success">Questions Create</a>
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -52,13 +52,13 @@
                                 <td>{{ $req->option2 }}</td>
                                 <td>{{ $req->option3 }}</td>
                                 <td>{{ $req->option4 }}</td>
-                                <td>{{ $req->correct_answer }}</td>
+                                <td>{{ $req->answer }}</td>
                                 <td style="overflow-wrap: inherit;
                                  word-wrap: break-word;">{{ $req->allQuestions }}</td>
                                 <td>{{ $req->created_at }}</td>
-                                <td ><a href="destroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
-                                <td><a href="edit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>
-                                <td><a href="detailPreview/{{$req->id}}" class="btn btn-primary text-white">Show</a></td>
+                                <td ><a href="phpDestroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="phpEdit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>
+                                <td><a href="phpDetailPreview/{{$req->id}}" class="btn btn-primary text-white">Show</a></td>
                             </tr>
                             @endforeach
                         </table>

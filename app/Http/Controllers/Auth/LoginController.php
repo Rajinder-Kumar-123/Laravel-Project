@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\Request;
 //use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -27,7 +27,7 @@ class LoginController extends Controller
      * @var string
      */
     //protected $redirectTo = RouteServiceProvider::HOME;
-    //protected $redirectTo;
+    //protected $redirectTo='/home';
 
     public function redirectTo(){
         switch(Auth::user()->role){
@@ -36,7 +36,6 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 2:
-                
                 $this->redirectTo= 'student';
                 return $this->redirectTo;
             case 3:
@@ -48,6 +47,32 @@ class LoginController extends Controller
             }
                 
     }
+   /*  public function showLogin(Request $request)
+    {  
+        $input = $request->all();
+   
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+   
+        if(Auth::attempt(array('email' => $input['email'], 'password' => $input['password']))){
+            if(Auth::check() && Auth::user()->role == 'admin'){
+                return $this->redirectTo; 
+            }
+            else if(auth()->user()->role == 'student') {
+                return redirect('student');
+            }
+            else if(auth()->user()->role == 'teacher') {
+                return redirect('teacher');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email & Password are incorrect.');
+        }     
+    } */
 
     /**
      * Create a new controller instance.

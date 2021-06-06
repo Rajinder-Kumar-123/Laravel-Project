@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class question extends Model
+class javascriptQuestion extends Model
 {
     use HasFactory;
-    protected $table= "question";
+    protected $table= "javascript_questions";
 
     public $timestamps= true;
 
@@ -19,9 +19,10 @@ class question extends Model
         'option2',
         'option3',
         'option4',
-        'correct_answer',
+        'answer',
         'allQuestions',
     ];
+
     public function setCategoryAttribute($value)
     {
         $this->attributes['category'] = json_encode($value);
@@ -31,16 +32,8 @@ class question extends Model
     {
         return $this->attributes['category'] = json_decode($value);
     }
-    public function multipleChoice(){
-        return $this->hasMany(category::class, 'user_id', 'id');
-    }
-    public function shortChoice(){
-        return $this->hasMany(category::class, 'user_id', 'id');
-    }
-    public function longChoice(){
-        return $this->hasMany(category::class, 'user_id', 'id');
-    }
-    public function answers(){
-        return $this->hasMany(Answer::class, 'ans_id', 'id');
+
+    public function javascriptAnswers(){
+        return $this->hasMany(javascriptAnswer::class, 'ans_id', 'id');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\registerModel;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Answer;
 use App\Models\Admin;
 use App\Models\question;
 use Illuminate\Http\Request;
@@ -75,6 +76,7 @@ class registrationController extends Controller
         //$reqesd=DB::table('question')->paginate(5);
         return view('showQuestions', ['request'=>$requests]);
     }
+   
     public function edit($id){
         $requests= question::find($id);
         return view('edit', ['request'=>$requests]);
@@ -88,11 +90,7 @@ class registrationController extends Controller
             $request->option4=$request->input('option4');
             $request->allQuestions=$request->input('allQuestions');
             $request->save();
-            echo "data is updated";
-        
-       /*  $input = $request->all();
-        question::whereIn($id)->update($input); */
-        //return redirect('showQuestions')->with('message', 'Question is successfully updated');
+        return redirect('showQuestions')->with('message', 'Question is successfully updated');
     }
     function destroyController($id){
         $requests = question::find($id);
@@ -103,24 +101,45 @@ class registrationController extends Controller
         $requests= DB::table('question')->where('id', $id)->get();
          return view('detailPreview', ['request'=> $requests]);
        }
-       public function multipleChoice($id){
+       public function showData(){
+        $users = DB::select("select * from question");
+        $answers = DB::select("select * from answers");
+        return view('question-answer', ['answers'=>$answers, 'users'=>$users, ]);
+        
+    }
+   public function resultShow(Request $request){
+       session(['counts'=>count($request->option)]);
+       $requests= session('counts');
+       session()->flash('resquest', "Out of Total you have attempt in " .$requests . " " ."Questions");
+
+        $i=1;
+       $result=0;
+       $selected= $request->option;
+      //print_r($selected);
+
+        $checked = DB::table("question")    
+       ->join("answers","answers.question_id",
+            "=","question.id")
+            ->where("answers.is_correct",1)
+            ->get();
+            // print_r($checked);
+      $check=$selected[$i] !== $checked;
+      if($check){
+        $result ++;
+      }
+         
+      $i++;
+         
+     
+     // echo "data is success" . $result;
+      return view('result-show');
+   }
+
+       /* public function multipleChoice($id){
             $user= question::find($id);
             $req= DB::table('question')->where('id', $id)->get();
             print_r($req);
             dd($user->multipleChoice);
-       }
+       }*/
 
-       public function shortChoice($id){
-        $user= question::find($id)->shortChoice;
-       /*  $req= DB::table('question')->where('id', $id)->get();
-        print_r($req); */
-        dd($user);
-        }
-        
-        public function longChoice($id){
-            $user= question::find($id);
-            $req= DB::table('question')->where('id', $id)->get();
-            print_r($req);
-            dd($user->longChoice);
-        }
     }

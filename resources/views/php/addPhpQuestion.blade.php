@@ -23,7 +23,7 @@
                                 <a href="teacher" class="btn btn-primary">Back</a>
                             </div>
                         </div>
-                        <form method="post" action="questions" enctype="multipart/form-data">
+                        <form method="post" action="phpQuestions" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label><strong>Name :</strong></label>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label><strong>Answer :</strong></label>
-                                    <input type="text" name="correct_answer" class="form-control"/>
+                                    <input type="text" name="answer" class="form-control"/>
                                 </div>
                             <div class="form-group">
                                 <label><strong>Description :</strong></label>
