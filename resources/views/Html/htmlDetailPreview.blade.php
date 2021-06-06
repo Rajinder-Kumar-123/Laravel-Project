@@ -44,7 +44,7 @@
                 <tr><td><input type="checkbox" value="{{$reqs->option1}}">{{$reqs->option3}}</td><br><br></tr>
                 <td><input type="checkbox" value="{{$reqs->option1}}">{{$reqs->option4}}</td><br><br>
                 </tr>
-                        <td><a href="/phpQuestion">Go back</a></td>
+                        <td><a href="htmlQuestion">Go back</a></td>
                     @endforeach
                     </table>
                 </form>

@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\phpQuestionController;
 use App\Http\Controllers\javascriptQuestionController;
+use App\Http\Controllers\htmlQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,8 +65,8 @@ Route::get('php/phpDestroyController/{id}', [phpQuestionController::class, 'phpD
 Route::get('php/phpDetailPreview/{id}', [phpQuestionController::class, 'phpDetailPreview']);
 Route::get('php/phpEdit/{id}', [phpQuestionController::class, 'edit']);
 Route::put('php/phpUpdate/{id}', [phpQuestionController::class, 'update']);
-Route::get('php/php/question-answer', [phpQuestionController::class, 'showData']);
-Route::post('php/php/result-show', [phpQuestionController::class, 'resultShow']);
+Route::get('php/question-answer', [phpQuestionController::class, 'showData']);
+Route::post('php/result-show', [phpQuestionController::class, 'resultShow']);
 
 //Javascript Question ans Answer
 Route::view("javascript/javascriptQuestion", "javascript/javascriptQuestion");
@@ -79,9 +80,18 @@ Route::put('javascript/javascriptUpdate/{id}', [javascriptQuestionController::cl
 Route::get('javascript/question-answer', [javascriptQuestionController::class, 'showData']);
 Route::post('javascript/result-show', [javascriptQuestionController::class, 'resultShow']);
 
-Route::view("htmlQuestion", "htmlQuestion");
-Route::get('shortChoice', [registrationController::class, 'shortChoice']);
 
+//HTML Question and Answer
+Route::view("Html/htmlQuestion", "Html/htmlQuestion");
+Route::view("Html/addHtmlQuestion", "Html/addHtmlQuestion");
+Route::get('Html/htmlQuestion', [htmlQuestionController::class, 'index']);
+Route::post('Html/htmlQuestions', [htmlQuestionController::class, 'html_question']);
+Route::get('Html/htmlDestroyController/{id}', [htmlQuestionController::class, 'htmlDestroyController']); 
+Route::get('Html/htmlDetailPreview/{id}', [htmlQuestionController::class, 'htmlDetailPreview']);
+Route::get('Html/htmlEdit/{id}', [htmlQuestionController::class, 'edit']);
+Route::put('Html/htmlUpdate/{id}', [htmlQuestionController::class, 'update']);
+Route::get('Html/question-answer', [htmlQuestionController::class, 'showData']);
+Route::post('Html/result-show', [htmlQuestionController::class, 'resultShow']);
 
 
 //Route::view('showQuestions', [registrationController::class,'showQuestions']);

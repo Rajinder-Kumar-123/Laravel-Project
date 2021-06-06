@@ -15,12 +15,12 @@
             <!-- <div class="col-md-12 offset-3 mt-5"> -->
                 <div class="card">
                     <div class="card-header bg-info">
-                        <h6 class="text-white">How To Store Multiple Question Value In Database using Laravel</h6>
+                        <h6 class="text-white">How To Store HTML Multiple Question Value In Database using Laravel</h6>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right mb-3">
-                                <a href="addPhpQuestion" class="btn btn-success">Questions Create</a>
+                                <a href="addHtmlQuestion" class="btn btn-success">Questions Create</a>
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -56,9 +56,9 @@
                                 <td style="overflow-wrap: inherit;
                                  word-wrap: break-word;">{{ $req->allQuestions }}</td>
                                 <td>{{ $req->created_at }}</td>
-                                <td ><a href="phpDestroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
-                                <td><a href="phpEdit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>
-                                <td><a href="phpDetailPreview/{{$req->id}}" class="btn btn-primary text-white">Show</a></td>
+                                <td ><a href="htmlDestroyController/{{$req->id}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="htmlEdit/{{$req->id}}" class="btn btn-success text-white">Edit</a></td>
+                                <td><a href="htmlDetailPreview/{{$req->id}}" class="btn btn-primary text-white">Show</a></td>
                             </tr>
                             @endforeach
                         </table>

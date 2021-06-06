@@ -11,8 +11,7 @@
                <button><a href="question-answer"> ALL Multiple Choice Question </a><button> 
                <button><a href="php/question-answer">PHP Question </a><button>
                <button><a href="javascript/question-answer">Javascript Question </a><button>
-               <button><a href="question-answer">HTML Question </a><button> 
-               <button><a href="question-answer">CSS Question </a><button> 
+               <button><a href="Html/question-answer">HTML Question </a><button> 
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

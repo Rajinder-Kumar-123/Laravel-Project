@@ -20,10 +20,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right mb-3">
-                                <a href="phpQuestion" class="btn btn-primary">Back</a>
+                                <a href="htmlQuestion" class="btn btn-primary">Back</a>
                             </div>
                         </div>
-                        <form method="post" action="phpQuestions" enctype="multipart/form-data">
+                        <form method="post" action="htmlQuestions" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label><strong>Name :</strong></label>
