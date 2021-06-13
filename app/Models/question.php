@@ -19,7 +19,8 @@ class question extends Model
         'option2',
         'option3',
         'option4',
-        'correct_answer',
+        'ans_id',
+        'answer',
         'allQuestions',
     ];
     public function setCategoryAttribute($value)

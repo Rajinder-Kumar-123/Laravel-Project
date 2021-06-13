@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
 </head>
+
 <body>
 <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div id="showimages"></div>
             </div>
+            
             <!-- <div class="col-md-12 offset-3 mt-5"> -->
                 <div class="card">
                     <div class="card-header bg-info">
@@ -32,7 +34,7 @@
                                 <th>Option2</th>
                                 <th>Option3</th>
                                 <th>Option4</th>
-                                <th>Correct Answer</th>
+                                <th>Answer</th>
                                 <th>Questions</th>
                                 <th>Date</th>
                                 <th style="text-align:center" colspan="3">Action</th>
@@ -52,7 +54,7 @@
                                 <td>{{ $req->option2 }}</td>
                                 <td>{{ $req->option3 }}</td>
                                 <td>{{ $req->option4 }}</td>
-                                <td>{{ $req->correct_answer }}</td>
+                                <td>{{ $req->answer }}</td>
                                 <td style="overflow-wrap: inherit;
                                  word-wrap: break-word;">{{ $req->allQuestions }}</td>
                                 <td>{{ $req->created_at }}</td>
@@ -71,4 +73,5 @@
         </div>
     </div>
 </body>
+
 </html>

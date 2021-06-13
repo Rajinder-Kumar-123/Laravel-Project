@@ -66,6 +66,7 @@ class registrationController extends Controller
 
     public function questions(Request $request){
         $input = $request->all();
+       // $input= Input::get('is_correct')==true ? 1 : 0;
         $input['category']= $request->input('category');
         question::create($input);
         return redirect('showQuestions');
@@ -112,26 +113,25 @@ class registrationController extends Controller
        $requests= session('counts');
        session()->flash('resquest', "Out of Total you have attempt in " .$requests . " " ."Questions");
 
-        $i=1;
-       $result=0;
        $selected= $request->option;
-      //print_r($selected);
+      print_r($selected);
+       $result=0;
+       $i=1;
+       
 
-        $checked = DB::table("question")    
-       ->join("answers","answers.question_id",
-            "=","question.id")
-            ->where("answers.is_correct",1)
-            ->get();
-            // print_r($checked);
-      $check=$selected[$i] !== $checked;
+        $checked = DB::table("question")->select('ans_id')   
+       ->get('ans_id');
+       
+        foreach($checked as $check){
+            $ans_id= $check->ans_id;
+        }
+             print_r($ans_id);
+             $check= $ans_id==$selected[$i];
       if($check){
-        $result ++;
-      }
-         
+        $result++;
+      }  
       $i++;
-         
-     
-     // echo "data is success" . $result;
+      echo "data is success" . $result;
       return view('result-show');
    }
 
